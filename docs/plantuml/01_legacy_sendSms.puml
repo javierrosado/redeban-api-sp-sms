@@ -1,0 +1,26 @@
+@startuml 01_legacy_sendSms
+skinparam monochrome true
+skinparam Shadowing false
+title 01_legacy_sendSms
+actor Cliente
+participant "Camel Route" as Camel
+participant "ProcesadorMDC" as MDC
+participant "Velocity Template" as Velocity
+participant "Backend Externo" as Backend
+participant "Logger" as Logger
+
+Cliente -> Camel : direct-vm:sendSms (Exchange)
+activate Camel
+Camel -> MDC : process()
+MDC --> Camel : MDC('app.name')
+Camel -> Velocity : merge 'templates/smsRequest.vm'
+with headers/props
+Velocity --> Camel : SOAP XML
+Camel -> Backend : HTTPS POST {{sms.servicio.host}}/{{sms.servicio.path}}
+(sslContextParameters)
+Backend --> Camel : SOAP Response
+Camel -> Logger : DEBUG Respuesta backend
++ body
+deactivate Camel
+
+@enduml

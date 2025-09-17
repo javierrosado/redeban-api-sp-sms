@@ -1,0 +1,27 @@
+{
+  "info": {
+    "name": "redeban-api-sp-sms",
+    "_postman_id": "b0b2f9b8-aaaa-4d4d-8888-cccc5555dddd",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Send SMS",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "idTransaccion", "value": "{{txId}}" },
+          { "key": "timestamp", "value": "{{timestamp}}" },
+          { "key": "ipAplicacion", "value": "{{ipAplicacion}}" },
+          { "key": "nombreAplicacion", "value": "{{nombreAplicacion}}" },
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"to\": \"51999999999\",\n  \"message\": \"Hola desde SMS microservicio\",\n  \"from\": \"REDEBAN\",\n  \"channel\": \"marketing\",\n  \"campaignId\": \"CMP-001\"\n}"
+        },
+        "url": { "raw": "{{baseUrl}}/v1/sms/send", "host": ["{{baseUrl}}"], "path": ["v1","sms","send"] }
+      }
+    }
+  ]
+}

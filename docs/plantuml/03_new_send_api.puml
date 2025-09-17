@@ -1,0 +1,50 @@
+
+@startuml 03_new_send_api
+skinparam monochrome true
+skinparam Shadowing false
+title 03_new_send_api
+actor Cliente
+participant "SmsResource (/v1/sms/send)" as Api
+participant "LoggingFilter" as Filtro
+participant "SmsService" as Svc
+participant "Camel ProducerTemplate" as PT
+participant "Route direct:sendSmsLatinia" as Route
+participant "Velocity (peticionLatinia.vm)" as Velocity
+participant "Latinia SOAP" as Latinia
+participant "Logger" as Logger
+
+Cliente -> Api : POST /v1/sms/send
+Headers: idTransaccion, timestamp,
+ipAplicacion, nombreAplicacion
+Body: SmsMessage
+activate Api
+Api -> Filtro : JAX-RS ContainerRequestFilter
+set MDC, start timer
+Filtro --> Api
+
+Api -> Svc : send(msg)
+(log input)
+activate Svc
+Svc -> PT : requestBody('direct:sendSmsLatinia', msg)
+(log before)
+activate PT
+PT -> Route : Exchange
+activate Route
+Route -> Velocity : merge vm + headers
+Velocity --> Route : SOAP XML
+Route -> Latinia : HTTP POST
+Latinia --> Route : HTTP 200/500 + body
+Route --> PT : Exchange (body, headers)
+deactivate Route
+PT --> Svc : Map result
+deactivate PT
+Svc --> Api : Map (log output, tookMs)
+deactivate Svc
+
+Api -> Filtro : JAX-RS ContainerResponseFilter
+log status, tookMs
+add txId header
+Filtro --> Api
+Api --> Cliente : 200/500 JSON
+deactivate Api
+@enduml

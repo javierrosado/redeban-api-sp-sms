@@ -1,0 +1,21 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:int="http://www.rbm.com.co/esb/integracionlatinia">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <int:integracionLatiniaSolicitud>
+         <int:infoTransaccion>
+            <int:valId>${headers.valId}</int:valId>
+            <int:valTipoRef>${headers.valTipoRef}</int:valTipoRef>
+            <int:refContrato>${headers.refContrato}</int:refContrato>
+            <int:idComercio>${headers.idComercio}</int:idComercio>
+            <int:numCelular>${headers.numCelular}</int:numCelular>
+         </int:infoTransaccion>
+         <int:infoLdap>
+            <int:usuario>${headers.usuario}</int:usuario>
+            <int:password>${headers.password}</int:password>
+         </int:infoLdap>
+         <int:infoMensaje>
+            <int:mensaje>${body}</int:mensaje>
+         </int:infoMensaje>
+      </int:integracionLatiniaSolicitud>
+   </soapenv:Body>
+</soapenv:Envelope>

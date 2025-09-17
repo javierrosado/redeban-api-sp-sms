@@ -1,0 +1,37 @@
+<soapenv:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:adap="http://adaptors.j2ee.limsp.latinia.com">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <adap:putMessage soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/">
+         <string xsi:type="xsd:string">
+           <![CDATA[<message #if(${exchange.properties.notificacionId})id="${exchange.properties.notificacionId}"#else id=""#end
+ #if(${exchange.properties.timestamp})ts="${exchange.properties.timestamp}"#else ts=""#end>
+
+<head>
+
+<type ref="#if(${exchange.properties.type})${exchange.properties.type}#end">
+<format>#if(${exchange.properties.format})${exchange.properties.format}#end</format>
+<mroute>#if(${exchange.properties.mroute})${exchange.properties.mroute}#end</mroute>
+</type>
+
+<info>
+
+<gsmDest>#if(${exchange.properties.gsmDest})${exchange.properties.gsmDest}#end</gsmDest>
+
+<loginEnterprise>#if(${exchange.properties.loginEnterprise})${exchange.properties.loginEnterprise}#end</loginEnterprise>
+<refContract>#if(${exchange.properties.refContract})${exchange.properties.refContract}#end</refContract>
+</info>
+
+</head>
+
+<body>
+
+<contentOut>#if(${exchange.properties.contentOut})${exchange.properties.contentOut}#end</contentOut>
+
+</body>
+
+</message>
+]]>
+         </string>
+      </adap:putMessage>
+   </soapenv:Body>
+</soapenv:Envelope>

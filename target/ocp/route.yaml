@@ -1,0 +1,18 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: redeban-api-sp-sms
+  labels:
+    app: redeban-api-sp-sms
+spec:
+  host: "router-redeban-desa.apps-desa.apps-crc.testing"
+  path: "/redeban/sms" 
+  to:
+    kind: Service
+    name: redeban-api-sp-sms
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect
+

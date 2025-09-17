@@ -1,0 +1,23 @@
+@startuml 02_legacy_sendSmsLatinia
+skinparam monochrome true
+skinparam Shadowing false
+title 02_legacy_sendSmsLatinia
+actor Cliente
+participant "Camel Route" as Camel
+participant "ProcesadorMDC" as MDC
+participant "Velocity Template" as Velocity
+participant "Backend Externo" as Backend
+participant "Logger" as Logger
+
+Cliente -> Camel : direct-vm:sendSmsLatinia (Exchange)
+activate Camel
+Camel -> Velocity : merge 'templates/peticionLatinia.vm'
+with exchange.properties
+Velocity --> Camel : SOAP XML
+Camel -> Backend : HTTP POST {{sms.latinia}}
+Backend --> Camel : HTTP Response
+Camel -> Logger : DEBUG Respuesta Latinia
++ body
+deactivate Camel
+
+@enduml
