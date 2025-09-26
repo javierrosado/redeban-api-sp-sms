@@ -10,4 +10,5 @@ data:
   SMS_SERVICIO_HOST: "WMBDEV:50105"
   SMS_SERVICIO_PATH: "WebServiceTechAdapter/LatiniaIntegracion"
   LATINIA_URL: "http://10.9.200.86:7001/wsAdaptorAuth/ws"
-
+  TRUSTSTORE_PATH: "/deployments/config/truststore.jks"
+  TRUSTSTORE_PASSWORD: "changeit"

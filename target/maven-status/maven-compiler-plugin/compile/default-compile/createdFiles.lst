@@ -1,6 +1,9 @@
+com\redeban\sms\domain\model\SmsSendResult.class
 com\redeban\sms\domain\model\SmsMessage.class
+com\redeban\sms\infrastructure\logging\Stopwatch.class
 com\redeban\sms\application\rest\SmsResource.class
 com\redeban\sms\application\rest\LoggingFilter.class
-com\redeban\sms\application\rest\SmsResource$ErrorDTO.class
+com\redeban\sms\infrastructure\logging\MdcUtil.class
 com\redeban\sms\infrastructure\camel\SmsRoute.class
 com\redeban\sms\infrastructure\camel\SmsService.class
+com\redeban\sms\infrastructure\logging\JsonLog.class

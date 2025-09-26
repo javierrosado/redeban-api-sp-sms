@@ -1,5 +1,9 @@
 C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\application\rest\LoggingFilter.java
 C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\application\rest\SmsResource.java
 C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\domain\model\SmsMessage.java
+C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\domain\model\SmsSendResult.java
 C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\infrastructure\camel\SmsRoute.java
 C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\infrastructure\camel\SmsService.java
+C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\infrastructure\logging\JsonLog.java
+C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\infrastructure\logging\MdcUtil.java
+C:\personal\ocp\redeban\microservicios\redeban-api-sp-sms\src\main\java\com\redeban\sms\infrastructure\logging\Stopwatch.java

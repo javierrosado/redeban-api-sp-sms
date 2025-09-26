@@ -4,7 +4,7 @@ metadata:
   name: redeban-api-sp-sms
   labels:
     app: redeban-api-sp-sms
-    version: "1.0.2"
+    version: "1.0.4"
 spec:
   replicas: 1
   selector:
@@ -14,11 +14,11 @@ spec:
     metadata:
       labels:
         app: redeban-api-sp-sms
-        version: "1.0.2"
+        version: "1.0.4"
     spec:
       containers:
       - name: redeban-api-sp-sms
-        image: "default-route-openshift-image-registry.apps-crc.testing/redeban-transversal/redeban-api-sp-sms:1.0.2"
+        image: "default-route-openshift-image-registry.apps-crc.testing/redeban-transversal/redeban-api-sp-sms:1.0.4"
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
